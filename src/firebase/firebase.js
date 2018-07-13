@@ -13,6 +13,55 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
+database.ref('expenses')
+   .on('child_removed', (snapshot) => {
+     console.log(snapshot.key, snapshot.val());
+   });
+
+   database.ref('expenses')
+   .on('child_changed', (snapshot) => {
+     console.log(snapshot.key, snapshot.val());
+   });
+
+   database.ref('expenses')
+   .on('child_added', (snapshot) => {
+     console.log(snapshot.key, snapshot.val());
+   });
+// database.ref('expenses')
+//   .on('value', (snapshot) => {
+//     const expenses = [];
+
+//     snapshot.forEach((childSnapshot) => {
+//       expenses.push({
+//         id: childSnapshot.key,
+//         ...childSnapshot.val()
+//       });
+//     });
+//     console.log(expenses);
+//   });
+  
+
+// database.ref('notes/LHHgHWRpmTgfZywuVsb').remove();
+
+// database.ref('notes/LHHgHWRpmTgfZywuVsb').update({
+//   body: "buy food"
+// });
+
+// database.ref('notes').push({
+//   title: "Leslie Title",
+//   body: 'Go for a run'
+// });
+
+
+
+// const firebaseNotes = {
+//   notes: {
+//     afwafw: {
+//       title: 'Hatchet',
+//       author: 'Gary Paulsen'
+//     }
+//   }
+// }
 
 // database.ref().on('value', (snapshot) => {
 //   const val = snapshot.val();
